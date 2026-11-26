@@ -1,0 +1,139 @@
+/*
+ * agent-drawer-tabs — 只隐藏主 pane 中非当前 tab 的 chip。
+ * 行必须被 patch.js 标记为 data-ad-managed="1"，避免影响右侧 dock 和
+ * 脚本加载前的一帧。
+ */
+[data-testid="workspace-tabs-row"][data-ad-managed="1"]
+  [data-testid^="workspace-tab-"][role="button"][aria-selected]:not([aria-selected="true"]):not([data-ad-reveal="1"]) {
+  display: none !important;
+}
+
+/* 只剩一个 tab 时不再受固定宽度限制，让标题完整显示；过长仍会省略 */
+[data-testid="workspace-tabs-row"][data-ad-managed="1"]
+  [data-testid^="workspace-tab-"][role="button"][aria-selected="true"] {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: min(460px, 46vw) !important;
+}
+
+.ad-tabs-trigger {
+  position: fixed;
+  z-index: 2147483000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 24px;
+  min-width: 34px;
+  padding: 0 7px;
+  margin: 0;
+  border: 1px solid var(--colors-border, rgba(128, 128, 128, 0.3));
+  border-radius: 6px;
+  background: var(--colors-surface2, rgba(128, 128, 128, 0.14));
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-app-region: no-drag;
+  appearance: none;
+}
+
+.ad-tabs-trigger:hover {
+  background: var(--colors-surface3, rgba(128, 128, 128, 0.22));
+}
+
+.ad-tabs-trigger:active {
+  transform: translateY(0.5px);
+}
+
+.ad-tabs-trigger[hidden] {
+  display: none !important;
+}
+
+.ad-tabs-panel {
+  position: fixed;
+  z-index: 2147483001;
+  box-sizing: border-box;
+  max-height: min(60vh, 440px);
+  overflow-y: auto;
+  padding: 4px;
+  border: 1px solid var(--colors-border, rgba(128, 128, 128, 0.28));
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+  font-family: inherit;
+  font-size: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.ad-tabs-panel[hidden] {
+  display: none !important;
+}
+
+.ad-tabs-head {
+  padding: 5px 8px 7px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+  user-select: none;
+}
+
+.ad-tabs-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ad-tabs-item:hover {
+  background: rgba(128, 128, 128, 0.14);
+}
+
+.ad-tabs-item-active {
+  background: rgba(128, 128, 128, 0.18);
+}
+
+.ad-tabs-item-icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  opacity: 0.85;
+}
+
+.ad-tabs-item-dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin: 0 4px;
+  border-radius: 999px;
+  opacity: 0.6;
+}
+
+.ad-tabs-item-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ad-tabs-item-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  font-size: 10px;
+  opacity: 0.62;
+}
+
+.ad-tabs-item-statusdot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+}
