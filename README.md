@@ -9,6 +9,8 @@ Before:  [倍…][局…][非…][实…][31…][专…]  +
 After:   [非周期性识别 ×]  [8 ▾]  +  ⋯
 ```
 
+![Tabs drawer](docs/screenshot.png)
+
 ## What it does
 
 - Keeps only the active tab in the strip; every other tab moves into a dropdown.

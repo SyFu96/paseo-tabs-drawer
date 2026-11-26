@@ -39,4 +39,12 @@ A display setting (e.g. **Settings → Appearance → Workspace tabs**: Expanded
 - The mobile switcher already provides the trigger + popover (`Combobox`, `workspaceTabSwitcherPopoverLayout`, `workspace.tabs.switcher.title/searchPlaceholder`), so this is mostly a layout mode plus a settings flag.
 - I validated the UX with a local DOM/CSS patch on 0.17.4 (active tab + `N ▾`, status from `data-status-bucket`); it works, but it is a patch and breaks on updates — which is why I'm proposing it in core.
 
+## Prototype
+
+A working prototype of this exact mode, as a local patch on Paseo 0.17.4 (Windows). It is not a plugin — the tab strip has no contribution point — so it injects a small script into the installed app and has to be re-applied after each update. Still, it shows how the mode feels in practice:
+
+![Tabs drawer prototype](https://raw.githubusercontent.com/SyFu96/paseo-tabs-drawer/main/docs/screenshot.png)
+
+Source: https://github.com/SyFu96/paseo-tabs-drawer (MIT, unofficial)
+
 Happy to turn this into a focused PR with tests and QA evidence if you want to take it forward.
